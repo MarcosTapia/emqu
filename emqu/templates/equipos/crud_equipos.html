@@ -1,0 +1,110 @@
+{% extends './basePanelAsistencias.html' %}
+
+{% block title %} {{ datos.titulo }} {% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/graficos.css') }}">
+{% endblock %}
+
+
+{% block content %} 
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="display-6" style="text-align: center; padding-top: 1%; ">{{ datos.titulo }}</h4>
+            <br>
+        </div>
+    </div>
+
+    <div class="row">
+
+            <div class="col">
+                    {% if datos.equipo is none  %}
+                        <form action="registroEquipos" method="Post">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                            <h3>Registro de Equipo</h3>
+                            <div class="form-group">
+                                <label for="nombreEquipo">Equipo: </label>
+                                <input type="text" class="form-control" id="nombreEquipo" name="nombreEquipo" placeholder="Nombre del Equipo">
+                                <label for="ipv4">Ipv4: </label>
+                                <input type="text" class="form-control" id="ipv4" name="ipv4" placeholder="Ipv4" />
+                            </div>
+                            <br>
+                            <input type="hidden" name="tipoOperacion" value="0" />
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </form>
+                    {% else %}
+                        <form action="registroEquipos" method="Post">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                            <h3>Edición de Equipo</h3>
+                            <div class="form-group">
+                                <label for="nombreEquipo">Equipo: </label>
+                                <input type="text" class="form-control" id="nombreEquipo" name="nombreEquipo" value="{{ datos.equipo[1] }}" />
+                                <label for="ipv4">Ipv4: </label>
+                                <input type="text" class="form-control" id="ipv4" name="ipv4" value="{{ datos.equipo[2] }}" />
+                            </div>
+                            <br>
+                            <input type="hidden" name="idEquipo" value="{{ datos.equipo[0] }}" />
+                            <input type="hidden" name="tipoOperacion" value="1" />
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </form>
+                    {% endif %}
+                    <br>
+            </div>
+            <div class="col-md-8">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <br>
+                    {% for message in messages %}
+                        <div class="alert alert-primary <div class="alert alert-primary alert-dismissible" role="alert">
+                            <strong> {{ message }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+                <h3 style="text-align: center;">Equipos Registrados</h3>
+                <table class="table table-striped" cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+                    <thead>
+                    <tr>
+                        <th scope="col">Equipo</th>
+                        <th scope="col">ipv4</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for equipo in datos.equipos %}
+                            <tr>
+                                <td>{{equipo[1] }}</td>
+                                <td>{{equipo[2] }}</td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <a class="nav-link" href="{{ url_for('system.eliminaEquipo',idEquipo=equipo[0] ) }}">
+                                                    <img src="{{ url_for('static', filename='img/sistemaicons/borrar_32.png') }}" alt="Eliminar Equipo" title="Eliminar Equipo" />
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a style="margin-left: 5px;" class="nav-link" href="{{ url_for('system.editarEquipo',idEquipo=equipo[0] ) }}">
+                                                    <img src="{{ url_for('static', filename='img/sistemaicons/editar_32.png') }}" alt="Editar Equipo" title="Editar Equipo" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+    </div>
+
+
+  
+
+{% endblock %}
+

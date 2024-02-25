@@ -1,0 +1,62 @@
+{% extends './baseAsistencias.html' %}
+
+{% block title %} {{ datos.titulo }} {% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
+{% endblock %}
+
+
+{% block content %} 
+
+    <h3 class="display-10" style="text-align: center; padding-top: 2%; ">{{ datos.titulo }}</h3>
+
+    <!--
+    <table class="table table-striped" cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+        <thead>
+          <tr>
+            <th scope="col">Turno</th>
+            <th scope="col">Grupo</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">NumeroEmp</th>
+            <th scope="col">Empleado</th>
+            <th scope="col">Ubicación</th>
+            <th scope="col">Area</th>
+            <th scope="col">Checador</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for asistencia in datos.asistencias['asistencias'] %}
+                <tr>
+                    <th scope="row"> {{asistencia.numero_empleado}}</th>
+                    <td>{{asistencia.grupo}}</td>
+                    <td>{{asistencia.fecha}}</td>
+                    <td>{{asistencia.numero_empleado}}</td>
+                    <td>{{asistencia.apellido_paterno}} {{asistencia.apellido_materno}} {{asistencia.nombre}}</td>
+                    <td>{{asistencia.descripcion_ubicacion}}</td>
+                    <td>{{asistencia.descripcion}}</td>
+                    <td>{{asistencia.ubicacion}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    -->
+
+    <br><br><br><br>
+    <form class="col-lg-6 offset-lg-3 " action="/system/muestraArchivoAsistencias" method="POST">
+        <h6>Archivos de Asistencias:</h6>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <select id="archivosAsistencias" name="archivosAsistencias" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
+            <option value="">Selecciona uno...</option>
+            {% for archivo in datos.archivos_asistencias %}
+                <option value="{{ archivo }}">{{ archivo }}</option>
+            {% endfor %}
+        </select>
+        <button class="btn btn-primary w-100 py-2" type="submit">Ver Archivo</button>
+    </form>
+    
+{% endblock %}
+
+
+
+

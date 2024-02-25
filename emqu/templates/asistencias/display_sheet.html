@@ -1,0 +1,23 @@
+{% extends './baseAsistencias.html' %}
+
+{% block title %} {{ datos.titulo }} {% endblock %}
+
+{% block content %} 
+    <table>
+        <tr>
+            <td>
+                <h2>{{ sheet_name }}</h2>
+            </td>            
+            <td>
+                <a style='padding-left: 200px; font-size: 24px;'  href="{{ url_for('system.downloadArchivoAsistencia', archivo=sheet_name) }}">Descargar </a>
+                <a style='padding-left: 30px; font-size: 24px;' href="{{ url_for('system.homeAsistencias') }}">Regresar </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h6 class="display8">Cantidad de Registros: {{ datos.num_regs }}</h6>
+            </td>
+        </tr>
+    </table>
+    {{ sheet_data | safe }}    
+{% endblock %}

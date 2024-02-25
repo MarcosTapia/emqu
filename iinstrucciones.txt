@@ -1,0 +1,11 @@
+1.- Importar en MySQL la base de datos emqu.MySQL
+a) crear entorno virtual y activarlo (usé venv)
+2.- instalar las dependencias (tiene mas de las necesarias porque quería usarlas pero me salieron 
+algunos inconvenientes personales)
+3.- Ejecutar el archivo run.py (python run.py)
+4.- Ingresar a la dirección localhost:5001
+5.- El correo es prueba@gmail.com (validado solo a nivel front)
+6.- Password: 12345
+
+Espero y les agrade, la verdad quería meter más validaciones, 
+pruebas, etc., pero por temas personales no terminé. Gracias. 

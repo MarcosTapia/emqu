@@ -1,0 +1,425 @@
+{% extends './basePanelAsistencias.html' %}
+
+{% block title %} {{ datos.titulo }} {% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
+{% endblock %}
+
+
+{% block content %} 
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="display-6" style="text-align: center; padding-top: 2%; ">{{ datos.titulo }}</h4>
+            <br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <table class="table table-striped" style="width: 100%;">
+                <tr>
+                    <td colspan="2">
+                        <h5 style="text-align: center;">Personal</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6><span class="glyphicon glyphicon-ok"></span> Personal en inducción: {{datos.total_induccion}}</h6>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <a style="margin-left: 5px;" class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">
+                                        <img src="{{ url_for('static', filename='img/sistemaicons/ojobuscar.ico') }}" alt="Mostrar Personal de Inducción" title="Mostrar Personal de Inducción" />
+                                    </a>                                
+                                </td>
+                                <td>
+                                    <a style="margin-left: 5px;" class="nav-link" href="{{ url_for('system.downloadPersonalInduccion') }}" >
+                                        <img src="{{ url_for('static', filename='img/sistemaicons/excel16.png') }}" alt="Exportar a Excel" title="Exportar a Excel" />
+                                    </a>                                
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6><span class="glyphicon glyphicon-ok"></span> Personal en Operación: {{datos.total_operadores}}</h6>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    a
+                                </td>
+                                <td>
+                                    b
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6><span class="glyphicon glyphicon-ok"></span> Personal No operativo ni inducción: {{datos.total_general}}</h6>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    a
+                                </td>
+                                <td>
+                                    b
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <table class="table table-striped" style="width: 100%;">
+                <tr>
+                    <td colspan="2">
+                        <h5 style="text-align: center;">Personal operativo por Turno</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6><span class="glyphicon glyphicon-ok"></span> Operadores asignados a turno 1: {{datos.operadores_turno1}}</h6>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    a
+                                </td>
+                                <td>
+                                    b
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6><span class="glyphicon glyphicon-ok"></span> Operadores asignados a turno 2: {{datos.operadores_turno2}}</h6>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    a
+                                </td>
+                                <td>
+                                    b
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6><span class="glyphicon glyphicon-ok"></span> Operadores asignados a turno 3: {{datos.operadores_turno3}}</h6>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    a
+                                </td>
+                                <td>
+                                    b
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <table class="table table-striped" style="width: 100%;">
+                <tr>
+                    <td colspan="2">
+                        <h5 style="text-align: center;">Asistencias Operadores</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6><span class="glyphicon glyphicon-ok"></span> Turno 1: {{datos.asistencias_operadores_turno1}}</h6>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    a
+                                </td>
+                                <td>
+                                    b
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6><span class="glyphicon glyphicon-ok"></span> Turno 2: {{datos.asistencias_operadores_turno2}}</h6>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    a
+                                </td>
+                                <td>
+                                    b
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6><span class="glyphicon glyphicon-ok"></span> Turno 3: {{datos.asistencias_operadores_turno3}}</h6>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    a
+                                </td>
+                                <td>
+                                    b
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <table class="table table-striped" style="width: 100%;">
+                <tr>
+                    <td colspan="2">
+                        <h5 style="text-align: center;">Faltas Operadores</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6><span class="glyphicon glyphicon-ok"></span> Turno 1: {{datos.operadores_turno1 - datos.asistencias_operadores_turno1}}</h6>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    a
+                                </td>
+                                <td>
+                                    b
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6><span class="glyphicon glyphicon-ok"></span> Turno 2: {{datos.operadores_turno2 - datos.asistencias_operadores_turno2}}</h6>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    a
+                                </td>
+                                <td>
+                                    b
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6><span class="glyphicon glyphicon-ok"></span> Turno 3: {{datos.operadores_turno3 - datos.asistencias_operadores_turno3}}</h6>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    a
+                                </td>
+                                <td>
+                                    b
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <canvas style="width: 300px; height: 150px;" id="chartEdoPersonal"></canvas>
+        </div>
+        <div class="col-md-6">
+            <canvas style="width: 300px; height: 150px;" id="chartAsistencias" ></canvas>
+        </div>
+    </div>    
+
+    
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <!--
+            <img style='width: 100%; height: 100%;' src="data:image/png;base64,{{ datos.turno1 }}" alt="Gráfico de Barras">    
+            -->
+        </div>
+        <div class="col-md-4">
+            <!--
+            <img style='width: 100%; height: 100%;' src="data:image/png;base64,{{ datos.turno2 }}" alt="Gráfico de Barras">    
+            -->
+        </div>
+        <div class="col-md-4">
+            <!--
+            <img style='width: 100%; height: 100%;' src="data:image/png;base64,{{ datos.turno3 }}" alt="Gráfico de Barras">    
+            -->
+        </div>
+    
+    </div>
+
+    <!--
+    <table class="table table-striped" cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+        <thead>
+          <tr>
+            <th scope="col">Turno</th>
+            <th scope="col">Grupo</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">NumeroEmp</th>
+            <th scope="col">Empleado</th>
+            <th scope="col">Ubicación</th>
+            <th scope="col">Area</th>
+            <th scope="col">Checador</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for asistencia in datos.asistencias['asistencias'] %}
+                <tr>
+                    <th scope="row"> {{asistencia.numero_empleado}}</th>
+                    <td>{{asistencia.grupo}}</td>
+                    <td>{{asistencia.fecha}}</td>
+                    <td>{{asistencia.numero_empleado}}</td>
+                    <td>{{asistencia.apellido_paterno}} {{asistencia.apellido_materno}} {{asistencia.nombre}}</td>
+                    <td>{{asistencia.descripcion_ubicacion}}</td>
+                    <td>{{asistencia.descripcion}}</td>
+                    <td>{{asistencia.ubicacion}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    -->
+
+    <!--
+    <br><br><br><br>
+    <form class="col-lg-6 offset-lg-3 " action="/system/muestraArchivoAsistencias" method="POST">
+        <h6>Archivos de Asistencias:</h6>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <select id="archivosAsistencias" name="archivosAsistencias" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
+            <option value="">Selecciona uno...</option>
+            {% for archivo in datos.archivos_asistencias %}
+                <option value="{{ archivo }}">{{ archivo }}</option>
+            {% endfor %}
+        </select>
+        <button class="btn btn-primary w-100 py-2" type="submit">Ver Archivo</button>
+    </form>
+    -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 style="color: blue;" class="modal-title" id="exampleModalLabel">
+                <span class="glyphicon glyphicon-hourglass"></span> Personal de Inducción
+            </h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                {% for persona in datos.listado_personal_induccion %}
+                    <p style="font-size: 12px; font-weight: bold;"><span class="glyphicon glyphicon-hand-right"></span> </span> {{ persona }}</p>
+                {% endfor %}
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+  
+    <!-- Para glypicons y ventana modal-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <!-- Configuracion del gráfico -->
+    <script>
+        //function creaGraficoAsistencias() {
+            var dataAsistencias = {
+                labels: ["Asistencias Turno 1", "Faltas Turno 1", "Asistencias Turno 2", "Faltas Turno 2"],
+                datasets: [{
+                    label: "Reporte de Asistencias",
+                    data: [ {{ datos.asistencias_operadores_turno1 }}
+                        , {{ datos.operadores_turno1 - datos.asistencias_operadores_turno1 }}
+                        , {{ datos.asistencias_operadores_turno2 }}
+                        , {{ datos.operadores_turno2 - datos.asistencias_operadores_turno2 }} ],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            };
+
+            var dataPersonal = {
+                labels: ["Personal Inducción", "Operadores", "Personal General"],
+                datasets: [{
+                    label: "Reporte del estado del Personal",
+                    data: [ {{ datos.total_induccion }}, {{ datos.total_operadores }}
+                        , {{ datos.total_general }}],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            };
+            
+  
+            // Configuración del gráfico de Asistencias
+            var ctx = document.getElementById('chartAsistencias').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: dataAsistencias
+            });
+
+            // Configuración del gráfico de Estado de Personal
+            var ctxPersonal = document.getElementById('chartEdoPersonal').getContext('2d');
+            var myChart = new Chart(ctxPersonal, {
+                type: 'bar',
+                data: dataPersonal
+            });
+
+        //}
+
+        //creaGraficoAsistencias():
+    </script>    
+  
+
+{% endblock %}
+
